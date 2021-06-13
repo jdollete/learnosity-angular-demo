@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import * as LearnosityModule from 'learnosity-sdk-nodejs';
+// import * as LearnosityModule from 'learnosity-sdk-nodejs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +16,6 @@ import { ApiAuthorComponent } from './components/api-author/api-author.component
 import { FooterComponent } from './components/footer/footer.component';
 import { ApiReportsComponent } from './components/api-reports/api-reports.component';
 import { ApiDataComponent } from './components/api-data/api-data.component';
-// import axios from 'axios';
 
 const appRoutes: Routes = [
   { path: '', component: ApiDisplayComponent },
