@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LrnSDKService } from '../../services/lrn-sdk.service';
 
+declare global {
+  interface Window { LearnosityAuthor: any; }
+}
+
+window.LearnosityAuthor = window.LearnosityAuthor || {};
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,9 +14,13 @@ import { LrnSDKService } from '../../services/lrn-sdk.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private lrnSDKService: LrnSDKService) { }
+  constructor(
+    private lrnSDKService: LrnSDKService, 
+    private window: Window
+  ) { }
 
   ngOnInit(): void {
+    
   }
 
   initAuthorAPI() {
@@ -31,8 +41,8 @@ export class NavbarComponent implements OnInit {
     let action = "";
 
     let signedRequest = this.lrnSDKService.init(service, securityPacket, secret, requestPacket, action);
-    console.log(signedRequest);
     
+    this.window.LearnosityAuthor.init(signedRequest);
     
   }
 

@@ -47,7 +47,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { enableTracing: false })
 
   ],
-  providers: [],
+  providers: [
+    {provide: Window, useValue: window}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
