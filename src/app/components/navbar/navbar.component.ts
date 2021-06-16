@@ -1,64 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LrnSDKService } from '../../services/lrn-sdk.service';
 
 declare global {
-  interface Window { LearnosityAuthor: any; }
+  interface Window { 
+    LearnosityAuthor: any; 
+    LearnosityItems: any;
+    LearnosityReports: any;
+  }
 }
 
-window.LearnosityAuthor = window.LearnosityAuthor || {};
+// window.LearnosityAuthor = window.LearnosityAuthor || {};
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
+  isExpanded: boolean = false;
 
   constructor(
     private lrnSDKService: LrnSDKService, 
     private window: Window
   ) { }
 
-  ngOnInit(): void {
-    
-  }
-
-  initAuthorAPI() {
-    console.log("Initializing Author API");
-    let service = "author";
-    let securityPacket = {
-      "consumer_key": "yis0TYCu7U9V4o7M",
-      "domain":       "localhost",
-      "user_id":      "$ANONYMIZED_USER_ID"
-    };
-    let secret = "74c5fd430cf1242a527f6223aebd42d30464be22";
-    let requestPacket = {
-      "mode": "item_list",
-      "user": {
-        "id": "allain.dollete@learnosity.com"
-      }
-    };
-    let action = "";
-
-    let signedRequest = this.lrnSDKService.init(service, securityPacket, secret, requestPacket, action);
-    
-    this.window.LearnosityAuthor.init(signedRequest);
-    
-  }
-
-  initItemsAPI() {
-    console.log("Initializing Items API");
-
-  }
-
-  initReportsAPI() {
-    console.log("Initializing Reports API");
-
-  }
-
-  initDataAPI() {
-    console.log("Initializing Data API");
-
-  }
+  ngOnInit(): void {}
 
 }

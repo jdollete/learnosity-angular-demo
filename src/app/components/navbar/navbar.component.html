@@ -1,6 +1,40 @@
-<div class="container-nav">
-  <app-button text="Author API" apiType="author" (btnClick)="initAuthorAPI()"></app-button>
-  <app-button text="Items API" apiType="items" (btnClick)="initItemsAPI()"></app-button>
-  <app-button text="Reports API" apiType="reports" (btnClick)="initReportsAPI()"></app-button>
-  <app-button text="Data API" apiType="data" (btnClick)="initDataAPI()"></app-button>
-</div>
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon class="chevron-button sidenav-button" (click)="isExpanded = !isExpanded" [ngClass]="{'rotated': isExpanded}" >chevron_right</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/">
+        <mat-icon mat-list-icon >home</mat-icon>
+        <span *ngIf="isExpanded">Home</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/author">
+        <mat-icon mat-list-icon>auto_stories</mat-icon>
+        <span *ngIf="isExpanded">Author API</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/items">
+        <mat-icon mat-list-icon>mode_edit</mat-icon>
+        <span *ngIf="isExpanded">Items API</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/reports">
+        <mat-icon mat-list-icon>bar_chart</mat-icon>
+        <span *ngIf="isExpanded">Reports API</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/data">
+        <mat-icon mat-list-icon>import_export</mat-icon>
+        <span *ngIf="isExpanded">Data API</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LrnSDKService } from '../../services/lrn-sdk.service';
 
 @Component({
   selector: 'app-api-data',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApiDataComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private lrnSDKService: LrnSDKService
+  ) { }
 
   ngOnInit(): void {
+    console.log("Initializing Data API");
+    this.initDataAPI()
+  }
+
+  initDataAPI() {
+
   }
 
 }

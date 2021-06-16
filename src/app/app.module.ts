@@ -17,6 +17,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ApiReportsComponent } from './components/api-reports/api-reports.component';
 import { ApiDataComponent } from './components/api-data/api-data.component';
 
+// Angular Material
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+
 const appRoutes: Routes = [
   { path: '', component: ApiDisplayComponent },
   { path: 'author', component: ApiAuthorComponent },
@@ -44,7 +50,11 @@ const appRoutes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: false })
+    RouterModule.forRoot(appRoutes, { enableTracing: false }),
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
 
   ],
   providers: [
